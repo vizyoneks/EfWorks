@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EfWorks.Models.Nortwind;
 using EfWorks.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,6 +34,7 @@ namespace EfWorks
             });
 
             services.AddEntityFrameworkSqlServer().AddDbContext<BlogDB>(options => options.UseSqlServer(Configuration.GetConnectionString("blogdb")));
+            services.AddEntityFrameworkSqlServer().AddDbContext<NorthwindContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("nortwind")));
             services.AddScoped<IBlog, BlogRepository>();
             services.AddScoped<ICategory, CategoryRepository>();
 
